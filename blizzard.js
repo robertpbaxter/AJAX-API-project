@@ -13,8 +13,8 @@ let x;
 let range;
 let j;
 
-// nextBtn.addEventListener('click', next);
-// previousBtn.addEventListener('click', previous);
+nextBtn.addEventListener('click', next);
+previousBtn.addEventListener('click', previous);
 searchForm.addEventListener('submit', changeRange);
 fetchResults();
 
@@ -35,7 +35,7 @@ function displayResults(json,range,x){
 
     (x == undefined) ? x = 0 : x;
 
-    (range == undefined) ? range = 6 : range;
+    (range == undefined) ? range = 0 : range;
     console.log(range)
 
     y = range + x;
@@ -84,15 +84,20 @@ function changeRange(e){
     range = Number(rangeTerm.value);
     // console.log(range);
     fetchResults(range);
-    // displayResults(e,range);
 }
 
-// function next(e){
-//     e.preventDefault();   
-//     (i == undefined) ? i = 0 : i;
-//     range = Number(rangeTerm.value);
-//     i+=range
-//     displayResults(json,range,i)
-// }
+function next(e){
+    e.preventDefault();
+    (x == undefined) ? x = 0 : x;   
+    x += range;
+    fetchResults(range,x);
+}
+
+function previous(e){
+    e.preventDefault();
+    (x <= 0) ? x = 0 : x;
+    x -= range;
+    fetchResults(range,x);
+}
 
 

@@ -84,7 +84,7 @@ function changeRange(e){
     range = Number(rangeTerm.value);
     // console.log(range);
     fetchResults(range);
-    // displayResults(e,range);
+
 }
 
 // function next(e){
