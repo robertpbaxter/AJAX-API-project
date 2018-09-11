@@ -1,0 +1,53 @@
+/* Global values */
+body{
+    background-color: lightgray;
+}
+
+/* Title & filters */
+
+.menu{
+    height: 50px;
+}
+
+#range{
+    width: 50px;
+}
+
+
+/* Results section */
+#results{
+    max-width: 1260px;
+    margin: auto;
+}
+
+.card{
+    border: 3px solid black;
+    background: black;
+    text-align: center;
+    width: 200px;
+    height: 222px;
+    overflow:hidden;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.reframe{
+    position: relative;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    text-indent: -35px;
+}
+
+.icon{
+    height: 200px;
+    width: auto;
+}
+
+h4{
+    font-family: 'Roboto', sans-serif;
+    color: cornflowerblue;
+    letter-spacing: 1px;
+    margin:3px 0 3px 0;
+    /* font-size: 5em; */
+}
