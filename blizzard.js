@@ -26,7 +26,7 @@ fetch(url)
     .then(response =>{
         return response.json();
     }).then(json =>{
-        // console.log(json);
+        console.log(json);
         displayResults(json, range, x); 
     }).catch(err=>{console.log(err)})
 }
@@ -47,29 +47,36 @@ function displayResults(json,range,x){
     (y >= json.pets.length) ? nextBtn.style.display = 'none' : nextBtn.style.display = 'inherit';
     
     for (i = x; i < y; i++){
-        let familiar = document.createElement('div')
-        let heading = document.createElement('h4');
+        let card = document.createElement('div')
         let img = document.createElement('img');
-        let para = document.createElement('p');
-        let clearfix = document.createElement('div')
-        let reframe = document.createElement('div')
+        let nameDiv = document.createElement('div');
+        let name = document.createElement('span')
+        let reframe = document.createElement('div');
+        let dropdownContent = document.createElement('div');
+        let family = document.createElement('p');
 
         current = result[i];
         iconURL = `http://media.blizzard.com/wow/renders/npcs/zoom/creature${current.creatureId}.jpg`;
-        heading.textContent = current.name;
+        name.textContent = current.name;
         img.src=iconURL;
         img.alt='Image'
+        family.textContent = `Family: ${current.family}`
+        
 
-        clearfix.setAttribute('class', 'clearfix');
         reframe.setAttribute('class', 'reframe');
         img.setAttribute('class','icon');
-        para.setAttribute('class','text');
-        familiar.setAttribute('class','card')
+        name.setAttribute('class','text');
+        card.setAttribute('class','card');
+        nameDiv.setAttribute('class','dropdown');
+        dropdownContent.setAttribute('class','dropdown-content')
         
-        section.appendChild(familiar);
-        familiar.appendChild(reframe);
+        section.appendChild(card);
+        card.appendChild(reframe);
         reframe.appendChild(img);
-        familiar.appendChild(heading);
+        card.appendChild(nameDiv);
+        nameDiv.appendChild(name);
+        nameDiv.appendChild(dropdownContent);
+        dropdownContent.appendChild(family);
 
     }
 

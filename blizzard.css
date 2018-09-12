@@ -8,6 +8,10 @@ body{
     margin: auto;
 }
 
+span,p:hover {
+    cursor: help;
+}
+
 /* Title & filters */
 
 header{
@@ -35,10 +39,9 @@ h1{
     background: black;
     text-align: center;
     width: 200px;
-    height: 222px;
-    overflow:hidden;
+    height: 216px;
     display: inline-block;
-    margin: 0 2px;
+    margin: 2px;
 }
 
 .reframe{
@@ -54,12 +57,28 @@ h1{
     width: auto;
 }
 
-h4{
+.text{
     font-family: 'Roboto', sans-serif;
     color: cornflowerblue;
-    letter-spacing: 1px;
-    margin:3px 0 3px 0;
-    /* font-size: 5em; */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* Footer */
