@@ -1,3 +1,4 @@
+const url = 'https://us.api.battle.net/wow/pet/?locale=en_US&apikey=mnrvm7hstejvmxdxyk3efksmdtt2qpky';
 const nextBtn = document.querySelector('.next');
 const previousBtn = document.querySelector('.prev');
 const nav = document.querySelector('nav');
@@ -6,19 +7,20 @@ const searchForm = document.querySelector('form');
 const submitBtn = document.querySelector('.submit');
 const rangeTerm = document.querySelector('.range')
 
-const url = 'https://us.api.battle.net/wow/pet/?locale=en_US&apikey=mnrvm7hstejvmxdxyk3efksmdtt2qpky';
-
-let i;
 let x;
+let y;
 let range;
-let j;
+
+nav.style.display = 'none';
+previousBtn.style.display = 'none';
 
 nextBtn.addEventListener('click', next);
 previousBtn.addEventListener('click', previous);
 searchForm.addEventListener('submit', changeRange);
-fetchResults();
+fetchResults(); 
 
-// Fetch code
+
+// Callable Fetch Function
 function fetchResults(range, x) {
 fetch(url)
     .then(response =>{
@@ -34,19 +36,15 @@ fetch(url)
 function displayResults(json,range,x){
 
     (x == undefined) ? x = 0 : x;
-
     (range == undefined) ? range = 0 : range;
-    console.log(range)
-
     y = range + x;
     
     while (section.firstChild) {
         section.removeChild(section.firstChild);
       }
-      
-    let result = json.pets;   
 
-    // console.log('Results:',result);
+    let result = json.pets;
+    (y >= json.pets.length) ? nextBtn.style.display = 'none' : nextBtn.style.display = 'inherit';
     
     for (i = x; i < y; i++){
         let familiar = document.createElement('div')
@@ -77,12 +75,12 @@ function displayResults(json,range,x){
 
 } 
 
-// Navigation
 
+// Navigation
 function changeRange(e){
     e.preventDefault();
     range = Number(rangeTerm.value);
-    // console.log(range);
+    nav.style.display = 'inherit';
     fetchResults(range);
 }
 
@@ -90,6 +88,7 @@ function next(e){
     e.preventDefault();
     (x == undefined) ? x = 0 : x;   
     x += range;
+    previousBtn.style.display = 'inherit';
     fetchResults(range,x);
 }
 
@@ -97,6 +96,7 @@ function previous(e){
     e.preventDefault();
     (x <= 0) ? x = 0 : x;
     x -= range;
+    (x === 0) ?  previousBtn.style.display = 'none' : previousBtn.style.display = 'inherit';
     fetchResults(range,x);
 }
 

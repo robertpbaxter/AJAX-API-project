@@ -5,30 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blizzard Pets Galore</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="icon" href="Snorlax.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Sigmar+One" rel="stylesheet">
     <link rel="stylesheet" href="blizzard.css">
 </head>
 <body>
     <div class="wrapper">
         <!--Title & Filters-->
-        <div class="menu">
-            <nav>
-                <div style="float:left">
-                    <button class="prev">Previous</button>
-                    <form>
-                        <label for="range"> Results per page (default is 30): </label>
-                        <input type="number" id="range" class="range" required>
-                        <button class="submit">Show me the pets!</button>
-                    </form>
-             </div>  
-                <div style="float:right"><button class="next">Next</button></div>  
-            </nav>
-        </div>
-        <br>
+        <header>
+                <div style="float:left"><img src="assets/blizzard.jpg" height="86px" width="auto" alt="Blizzard"></div>  
+                <div style="float:right"><img src="assets/wow.png" alt="World of Warcraft"></div>  
+            <h1>Blizzard Pets Galore</h1>
+
+            <div class="menu">
+                <form>
+                    <label for="range"> Results per page: </label>
+                    <input type="number" id="range" class="range" required>
+                    <button class="submit">Show me the pets!</button>
+                </form>
+                <nav>
+                    <div style="float:left"><button class="prev">Previous</button></div>  
+                    <div style="float:right"><button class="next">Next</button></div>  
+                </nav>
+            </div>
+        </header>
         <!--Results-->
         <section id="results">
 
         </section>
+    <footer>
+            <!--Legal items-->
+        <p>Disclaimer: Not all pet images are available via Blizzard's media database.</p>
+        <p><a href="https://www.blizzard.com" target="_blank">Blizzard &copy; 2018</a>. Blizzard is a registered trademark of Blizzard Entertainment, Inc.</p>
+    </footer>
     </div>
 <script type="text/javascript" src="blizzard.js"></script>
 </body>
