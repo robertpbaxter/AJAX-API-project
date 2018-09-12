@@ -26,7 +26,7 @@ fetch(url)
     .then(response =>{
         return response.json();
     }).then(json =>{
-        console.log(json);
+        // console.log(json);
         displayResults(json, range, x); 
     }).catch(err=>{console.log(err)})
 }
@@ -44,7 +44,7 @@ function displayResults(json,range,x){
       }
 
     let result = json.pets;
-    (y >= json.pets.length) ? nextBtn.style.display = 'none' : nextBtn.style.display = 'inherit';
+    (y >= json.pets.length) ? nav.style.display = 'none' : nextBtn.style.display = 'inherit';
     
     for (i = x; i < y; i++){
         let card = document.createElement('div')
@@ -54,15 +54,25 @@ function displayResults(json,range,x){
         let reframe = document.createElement('div');
         let dropdownContent = document.createElement('div');
         let family = document.createElement('p');
+        let health = document.createElement('p');
+        let power = document.createElement('p');
+        let speed = document.createElement('p');
+        let strong = document.createElement('p');
+        let weak = document.createElement('p');
+        
 
         current = result[i];
         iconURL = `http://media.blizzard.com/wow/renders/npcs/zoom/creature${current.creatureId}.jpg`;
-        name.textContent = current.name;
         img.src=iconURL;
-        img.alt='Image'
-        family.textContent = `Family: ${current.family}`
+        img.alt='Image';
+        name.textContent = current.name;
+        family.textContent = `Family: ${current.family}`;
+        health.textContent = `Health: ${current.stats.health}hp`;
+        power.textContent = `Power: ${current.stats.power}`;
+        speed.textContent = `Speed: ${current.stats.speed}`;
+        strong.textContent = `Strong against: ${current.strongAgainst[0]}`;
+        weak.textContent = `Weak against: ${current.weakAgainst[0]}`;
         
-
         reframe.setAttribute('class', 'reframe');
         img.setAttribute('class','icon');
         name.setAttribute('class','text');
@@ -77,9 +87,21 @@ function displayResults(json,range,x){
         nameDiv.appendChild(name);
         nameDiv.appendChild(dropdownContent);
         dropdownContent.appendChild(family);
+        dropdownContent.appendChild(health);
+        dropdownContent.appendChild(power);
+        dropdownContent.appendChild(speed);
+        dropdownContent.appendChild(strong);
+        dropdownContent.appendChild(weak);
 
     }
 
+    if (range !== 0) {
+        let displayRange = document.createElement('span');
+        let spacer = document.createElement('br');
+        displayRange.textContent = `Displaying ${x+1}-${y} of ${json.pets.length} results.`
+        section.appendChild(spacer);
+        section.appendChild(displayRange);
+    }
 } 
 
 
@@ -87,7 +109,7 @@ function displayResults(json,range,x){
 function changeRange(e){
     e.preventDefault();
     range = Number(rangeTerm.value);
-    nav.style.display = 'inherit';
+    (range == 0) ? nav.style.display = 'none' : nav.style.display = 'inherit';
     fetchResults(range);
 }
 
