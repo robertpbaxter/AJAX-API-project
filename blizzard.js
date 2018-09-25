@@ -5,7 +5,7 @@ const nav = document.querySelector('nav');
 const section = document.querySelector('section');
 const searchForm = document.querySelector('form');
 const submitBtn = document.querySelector('.submit');
-const rangeTerm = document.querySelector('.range')
+const rangeTerm = document.querySelector('.range'); 
 
 let x;
 let y;
@@ -28,7 +28,7 @@ fetch(url)
     }).then(json =>{
         // console.log(json);
         displayResults(json, range, x); 
-    }).catch(err=>{console.log(err)})
+    }) 
 }
 
 
@@ -91,7 +91,7 @@ function displayResults(json,range,x){
         dropdownContent.appendChild(power);
         dropdownContent.appendChild(speed);
         dropdownContent.appendChild(strong);
-        dropdownContent.appendChild(weak);
+        dropdownContent.appendChild(weak); 
 
     }
 
